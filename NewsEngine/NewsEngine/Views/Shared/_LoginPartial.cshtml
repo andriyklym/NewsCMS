@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNet.Identity
+<link href="~/Content/Home/account.css" rel="stylesheet" type="text/css" />
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Здравствуйте, " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Регистрация", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li><button type="button" class="btn btn-info btn-lg" onclick="document.getElementById('id01').style.display='block'">Login</button></li>
+    </ul>
+}
+
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'"
+          class="close" title="Close Modal">&times;</span>
+
+    <!-- Modal Content -->
+    <form class="modal-content animate login-form" action="/Account/Login", method="post">
+        @Html.AntiForgeryToken()
+        <div class="imgcontainer">
+            <img src="~/Images/Home/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label><b>Username</b></label>
+            <input type="text" class="login-input" placeholder="Enter email" name="Email" required oninvalid="this.setCustomValidity('Please enter email')" oninput="setCustomValidity('')">
+
+            <label><b>Password</b></label>
+            <input type="password" class="login-input" placeholder="Enter Password" name="Password" required oninvalid="this.setCustomValidity('Please enter password')" oninput="setCustomValidity('')">
+
+            <button type="submit" class="login-button">Login</button>
+            <label>
+                <input type="checkbox" checked="checked"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+
+<script src="~/Scripts/Home/home.js" type="text/javascript"></script>

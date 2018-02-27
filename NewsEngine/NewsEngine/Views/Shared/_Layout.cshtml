@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maxima;-scale=2.0">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="row header">
+        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        Logo
+                        <button type="button" class="navbar-toggle glyphicon glyphicon-menu-hamburger" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="sr-only glyphicon glyphicon-menu-hamburger">Toggle navigation</span>
+                            <span class="toggle-icon glyphicon glyphicon-menu-hamburger"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse nav-collapse" id="navbar-main">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">Menu1</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu2<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/JsonStudio/Index">Submenu1</a></li>
+                                    <li><a href="/JsonStudio/CreateHome">Submenu2</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu3<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/SuperAdmin/Index">Submenu1</a></li>
+                                    <li><a href="/SuperAdmin/Users">Submenu2</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Menu3</a></li>
+
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container-fluid body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year – NewsEngine</p>
+        </footer>
+    </div>
+
+    
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+</body>
+</html>
